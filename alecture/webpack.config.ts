@@ -47,11 +47,11 @@ const config: Configuration = {
             '@babel/preset-react',
             '@babel/preset-typescript',
           ],
-          env: {
-            development: {
-              plugins: [require.resolve('react-refresh/babel')],
-            },
-          },
+          // env: {
+          //   development: {
+          //     plugins: [require.resolve('react-refresh/babel')],
+          //   },
+          // },
         },
         exclude: path.join(__dirname, 'node_modules'),
       },
@@ -80,12 +80,12 @@ const config: Configuration = {
     port: 3090,
     devMiddleware: { publicPath: '/dist/' },
     static: { directory: path.resolve(__dirname) },
-    proxy: {
-      '/api/': {
-        target: 'http://localhost:3095',
-        changeOrigin: true,
-      },
-    },
+    // proxy: {
+    //   './api/': {
+    //     target: 'http://localhost:3095',
+    //     changeOrigin: true,
+    //   },
+    // },
   },
 };
 
