@@ -1,6 +1,8 @@
 import React, { useCallback, useState, VFC } from 'react';
 import { Success, Form, Error, Label, Input, LinkContainer, Button, Header } from './styles';
 import { Link } from 'react-router-dom';
+import useInput from '@hooks/useInput';
+import axios from 'axios';
 
 const SignUp = () => {
   const [email, setemail] = useState('');
@@ -34,6 +36,19 @@ const SignUp = () => {
       e.preventDefault();
       if (!mismatchError) {
         console.log('서버로 회원가입 진행');
+        axios
+          .post('http://localhost:3095/api/users', {
+            email,
+            nickname,
+            password,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.error(error.response);
+          })
+          .finally(() => {});
       }
       console.log(email, nickname, password, passwordCheck);
     },
