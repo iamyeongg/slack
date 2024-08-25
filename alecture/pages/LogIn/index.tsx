@@ -19,7 +19,7 @@ const LogIn = () => {
       setLogInError(false);
       axios
         .post(
-          '/api/users/login',
+          'http://localhost:3095/api/users/login',
           { email, password },
           {
             withCredentials: true,
