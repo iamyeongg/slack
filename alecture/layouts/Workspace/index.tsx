@@ -36,7 +36,7 @@ import { toast } from 'react-toastify';
 import CreateChannelModal from '@components/CreateChannelModal';
 
 const Workspace: FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { data, error, revalidate } = useSWR('http://localhost:3095/api/users', fetcher);
+  const { data, error, revalidate, mutate } = useSWR('http://localhost:3095/api/users', fetcher);
 
   const onLogout = useCallback(() => {
     axios
@@ -44,7 +44,8 @@ const Workspace: FC<{ children: React.ReactNode }> = ({ children }) => {
         withCredentials: true,
       })
       .then(() => {
-        revalidate();
+        // revalidate();
+        mutate(false);
       });
   }, []);
   console.log(data);

@@ -6,7 +6,7 @@ import React, { useCallback, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import useSWR from 'swr';
 const LogIn = () => {
-  const { data, error, revalidate } = useSWR('http://localhost:3095/api/users', fetcher, { dedupingInterval: 100000 });
+  const { data, error, revalidate, mutate } = useSWR('http://localhost:3095/api/users', fetcher, { dedupingInterval: 100000 });
   //fetcher는 주소를 어떻게 처리할지 구현해야하는 함수
   const [logInError, setLogInError] = useState(false);
   const [email, onChangeEmail] = useInput('');
@@ -29,7 +29,8 @@ const LogIn = () => {
           // withCredentials: true, 서버로 요청 시 쿠키를 전달할 수 있도록 설정
         )
         .then((response) => {
-          revalidate();
+          // revalidate();
+          mutate(response.data, false);
         })
         .catch((error) => {
           setLogInError(error.response?.status === 401);
