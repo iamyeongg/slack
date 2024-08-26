@@ -34,6 +34,8 @@ import useSWR from 'swr';
 import gravatar from 'gravatar';
 import { toast } from 'react-toastify';
 import CreateChannelModal from '@components/CreateChannelModal';
+import DirectMessage from '@pages/DirectMessage';
+import Channel from '@pages/Channel';
 
 const Workspace: FC<{ children: React.ReactNode }> = ({ children }) => {
   const { data, error, revalidate, mutate } = useSWR('http://localhost:3095/api/users', fetcher);
@@ -54,7 +56,28 @@ const Workspace: FC<{ children: React.ReactNode }> = ({ children }) => {
   }
   return (
     <div>
+      <Header>
+        <RightMenu>
+          <span>
+            <ProfileImg src={gravatar.url(data.email, { s: '28px', d: 'retro' })} alt={data.nickname} />
+          </span>
+        </RightMenu>
+      </Header>
       <button onClick={onLogout}>로그아웃</button>
+      <WorkspaceWrapper>
+        <Workspaces>test</Workspaces>
+        <Channels>
+          <WorkspaceName>Sleact</WorkspaceName>
+          <MenuScroll>메뉴스크롤</MenuScroll>
+        </Channels>
+        <Chats>
+          <Switch>
+            <Route path="/workspace/channel" component={Channel} />
+            <Route path="/workspace/dm" component={DirectMessage} />
+          </Switch>
+        </Chats>
+      </WorkspaceWrapper>
+
       {children}
     </div>
   );
