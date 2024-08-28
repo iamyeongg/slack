@@ -144,7 +144,7 @@ const DirectMessage = () => {
   // const chatSections = makeSection(chatData ? chatData.flat().reverse() : []);
 
   return (
-    <Workspace>DirectMessage</Workspace>
+    <div>DirectMessage</div>
     // <Container onDrop={onDrop} onDragOver={onDragOver}>
     //   <Header>
     //     <img src={gravatar.url(userData.email, { s: '24px', d: 'retro' })} alt={userData.nickname} />

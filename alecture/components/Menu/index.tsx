@@ -23,6 +23,7 @@ const Menu: FC<Props> = ({ children, style, show, onCloseModal, closeButton }) =
     </CreateMenu>
   );
 };
+
 Menu.defaultProps = {
   closeButton: true,
 };

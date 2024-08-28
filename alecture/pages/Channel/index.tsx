@@ -16,9 +16,9 @@ import Workspace from '@layouts/Workspace';
 
 const Channel = () => {
   return (
-    <Workspace>
-      <div>채널</div>
-    </Workspace>
+    <Container>
+      <Header></Header>
+    </Container>
   );
 };
 

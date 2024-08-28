@@ -34,8 +34,9 @@ import useSWR from 'swr';
 import gravatar from 'gravatar';
 import { toast } from 'react-toastify';
 import CreateChannelModal from '@components/CreateChannelModal';
-import DirectMessage from '@pages/DirectMessage';
-import Channel from '@pages/Channel';
+
+const Channel = loadable(() => import('@pages/Channel'));
+const DirectMessage = loadable(() => import('@pages/DirectMessage'));
 
 const Workspace: FC<{ children: React.ReactNode }> = ({ children }) => {
   const { data, error, revalidate, mutate } = useSWR('http://localhost:3095/api/users', fetcher);
